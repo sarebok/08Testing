@@ -35,7 +35,7 @@ describe("POST /cafes", () => {
 });
 
 describe("PUT /cafes/:id", () => {
-    it('should respond with a 400 status if id in params does not match id in payload', async () => {
+    it('should respond with a 400 status if id in the params of the request does not match id in payload', async () => {
         const existingId = 'existing-id';
         const updatedCafe = {
             id: 'different-id', 
