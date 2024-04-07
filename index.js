@@ -1,9 +1,19 @@
 ﻿import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
-import cafes from "./cafes.json" assert { type: "json" };
+import cafes from './cafes.json';
+
+/* const PORT = process.env.PORT || 3000; */
+
+const server = app.listen(3000, () => console.log("SERVER ON"));
+
+app.use(express.json())
 
 
-app.listen(3000, console.log("SERVER ON"))
+
 
 app.use(express.json())
 
@@ -71,4 +81,5 @@ app.use("*", (req, res) => {
     res.status(404).send({ message: "La ruta que intenta consultar no existe" })
 })
 
-export default app
+export { app, server };
+
