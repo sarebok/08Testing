@@ -1,15 +1,16 @@
 import request from 'supertest';
 import {app, server} from './index.js';
 
-describe("Get /cafes", () => {
+describe("Get /cafes route test", () => {
     it('should respond with status 200', async () => {
         const response = await request(server).get('/cafes').send();
         expect(response.status).toBe(200);
     });
 
-    it('should respond with array', async () => {
+    it('should respond with array with at least one object', async () => {
         const response = await request(server).get('/cafes').send();
-        expect(response.body).toBeInstanceOf(Array);
+        expect(Array.isArray(response.body)).toBeTruthy();
+        expect(response.body.length).toBeGreaterThan(0);
     });
 });
 
